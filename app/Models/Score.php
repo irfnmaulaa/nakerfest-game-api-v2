@@ -9,4 +9,5 @@ class Score extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $hidden = ['game_id'];
 }
