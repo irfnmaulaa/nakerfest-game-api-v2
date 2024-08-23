@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/games/{game}/scores', [\App\Http\Controllers\GameController::class, 'get_all_scores']);
+Route::post('/games/{game}/scores', [\App\Http\Controllers\GameController::class, 'post_score']);

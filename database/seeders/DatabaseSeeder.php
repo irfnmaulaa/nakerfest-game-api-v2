@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Game;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +16,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $games = [
+            [
+                'title' => 'Tebak Bendera',
+                'players_count' => 1,
+            ],
+            [
+                'title' => 'Panjat Pinang',
+                'players_count' => 1,
+            ],
+            [
+                'title' => 'Invisible Maze',
+                'players_count' => 2,
+            ],
+            [
+                'title' => 'Rubik Timer',
+                'players_count' => 1,
+            ],
+        ];
+        foreach ($games as $game) {
+            $game['slug'] = Str::slug($game['title']);
+            Game::create($game);
+        }
     }
 }
